@@ -1,0 +1,135 @@
+SQL Query for popular combos
+-----------------------------------------------------------
+SELECT * FROM
+(select TOP 5 p1.Item_Name AS Item_Name_1, od1.itemID as item_1, p2.Item_Name AS Item_Name_2, od2.itemID as item_2, Count(od1.Order_Number) as num_of_orders, os.RestID, rs.RestaurantName, p1.Vegetarian
+from 
+((((OrderDetails od1 
+inner join OrderDetails od2
+     on od1.Order_Number = od2.Order_Number and
+        od1.itemID < od2.itemID)
+inner join Products p1
+on p1.Item_ID = od1.itemID)
+inner join Products p2
+on p2.Item_ID = od2.itemID)
+inner join Orders os
+on os.Order_Number = od1.Order_Number)
+inner join Restaurants rs
+on rs.RestID = os.RestID
+Where os.RestID = 1 AND p1.Vegetarian ="Y" AND p2.Vegetarian ="Y"
+Group by od1.itemID, od2.itemID, p1.Item_Name, p2.Item_Name, os.RestID, rs.RestaurantName, p1.Vegetarian
+Order by Count(od1.Order_Number) DESC)
+
+UNION ALL
+
+SELECT * FROM
+(select TOP 5 p1.Item_Name AS Item_Name_1, od1.itemID as item_1, p2.Item_Name AS Item_Name_2, od2.itemID as item_2, Count(od1.Order_Number) as num_of_orders, os.RestID, rs.RestaurantName, p1.Vegetarian
+from 
+((((OrderDetails od1 
+inner join OrderDetails od2
+     on od1.Order_Number = od2.Order_Number and
+        od1.itemID < od2.itemID)
+inner join Products p1
+on p1.Item_ID = od1.itemID)
+inner join Products p2
+on p2.Item_ID = od2.itemID)
+inner join Orders os
+on os.Order_Number = od1.Order_Number)
+inner join Restaurants rs
+on rs.RestID = os.RestID
+Where os.RestID = 2 AND p1.Vegetarian ="Y" AND p2.Vegetarian ="Y"
+Group by od1.itemID, od2.itemID, p1.Item_Name, p2.Item_Name, os.RestID, rs.RestaurantName, p1.Vegetarian
+Order by Count(od1.Order_Number) DESC)
+
+UNION ALL 
+
+SELECT * FROM
+(select TOP 5 p1.Item_Name AS Item_Name_1, od1.itemID as item_1, p2.Item_Name AS Item_Name_2, od2.itemID as item_2, Count(od1.Order_Number) as num_of_orders, os.RestID, rs.RestaurantName, p1.Vegetarian
+from 
+((((OrderDetails od1 
+inner join OrderDetails od2
+     on od1.Order_Number = od2.Order_Number and
+        od1.itemID < od2.itemID)
+inner join Products p1
+on p1.Item_ID = od1.itemID)
+inner join Products p2
+on p2.Item_ID = od2.itemID)
+inner join Orders os
+on os.Order_Number = od1.Order_Number)
+inner join Restaurants rs
+on rs.RestID = os.RestID
+Where os.RestID = 3 AND p1.Vegetarian ="Y" AND p2.Vegetarian ="Y"
+Group by od1.itemID, od2.itemID, p1.Item_Name, p2.Item_Name, os.RestID, rs.RestaurantName, p1.Vegetarian
+Order by Count(od1.Order_Number) DESC);
+
+UNION ALL
+
+SELECT * FROM
+(select TOP 5 p1.Item_Name AS Item_Name_1, od1.itemID as item_1, p2.Item_Name AS Item_Name_2, od2.itemID as item_2, Count(od1.Order_Number) as num_of_orders, os.RestID, rs.RestaurantName, p1.Vegetarian
+from 
+((((OrderDetails od1 
+inner join OrderDetails od2
+     on od1.Order_Number = od2.Order_Number and
+        od1.itemID < od2.itemID)
+inner join Products p1
+on p1.Item_ID = od1.itemID)
+inner join Products p2
+on p2.Item_ID = od2.itemID)
+inner join Orders os
+on os.Order_Number = od1.Order_Number)
+inner join Restaurants rs
+on rs.RestID = os.RestID
+Where os.RestID = 1 AND p1.Vegetarian ="N" AND p2.Vegetarian ="N"
+Group by od1.itemID, od2.itemID, p1.Item_Name, p2.Item_Name, os.RestID, rs.RestaurantName, p1.Vegetarian
+Order by Count(od1.Order_Number) DESC)
+
+UNION ALL
+
+SELECT * FROM
+(select TOP 5 p1.Item_Name AS Item_Name_1, od1.itemID as item_1, p2.Item_Name AS Item_Name_2, od2.itemID as item_2, Count(od1.Order_Number) as num_of_orders, os.RestID, rs.RestaurantName, p1.Vegetarian
+from 
+((((OrderDetails od1 
+inner join OrderDetails od2
+     on od1.Order_Number = od2.Order_Number and
+        od1.itemID < od2.itemID)
+inner join Products p1
+on p1.Item_ID = od1.itemID)
+inner join Products p2
+on p2.Item_ID = od2.itemID)
+inner join Orders os
+on os.Order_Number = od1.Order_Number)
+inner join Restaurants rs
+on rs.RestID = os.RestID
+Where os.RestID = 2 AND p1.Vegetarian ="N" AND p2.Vegetarian ="N"
+Group by od1.itemID, od2.itemID, p1.Item_Name, p2.Item_Name, os.RestID, rs.RestaurantName, p1.Vegetarian
+Order by Count(od1.Order_Number) DESC)
+
+UNION ALL SELECT * FROM
+(select TOP 5 p1.Item_Name AS Item_Name_1, od1.itemID as item_1, p2.Item_Name AS Item_Name_2, od2.itemID as item_2, Count(od1.Order_Number) as num_of_orders, os.RestID, rs.RestaurantName, p1.Vegetarian
+from 
+((((OrderDetails od1 
+inner join OrderDetails od2
+     on od1.Order_Number = od2.Order_Number and
+        od1.itemID < od2.itemID)
+inner join Products p1
+on p1.Item_ID = od1.itemID)
+inner join Products p2
+on p2.Item_ID = od2.itemID)
+inner join Orders os
+on os.Order_Number = od1.Order_Number)
+inner join Restaurants rs
+on rs.RestID = os.RestID
+Where os.RestID = 3 AND p1.Vegetarian ="N" AND p2.Vegetarian ="N"
+Group by od1.itemID, od2.itemID, p1.Item_Name, p2.Item_Name, os.RestID, rs.RestaurantName, p1.Vegetarian
+Order by Count(od1.Order_Number) DESC);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SQL Query for monthly sales
+------------------------------------------------
+
+SELECT Count(Sales.Date_of_Sale) AS Number_of_Orders, Sum(Sales.Count_of_Items) AS No_of_Items_Sold, Round(Sum([Sales].Price),2) AS Total_Amount, Sales.Month_of_Sale, Sales.Year_of_Sale, Restaurants.RestaurantName AS Restaurant_Name, Sales.Restaurant_ID, Sales.Date_of_Sale
+FROM (SELECT OrderDetails.[Order_Number], Count(OrderDetails.Order_Number) AS Count_of_Items, sum(Products.Product_Price) AS Price, Orders.RestID AS Restaurant_ID, Month(Orders.Order_Date) AS Month_of_Sale, Year(Orders.Order_Date) AS Year_of_Sale, Format(Orders.Order_Date,"mmmm yyyy") AS Date_of_Sale FROM (Products INNER JOIN OrderDetails ON Products.Item_ID = OrderDetails.ItemID) INNER JOIN Orders ON OrderDetails.Order_Number = Orders.Order_Number GROUP BY OrderDetails.[Order_Number], Year(Orders.Order_Date), Month(Orders.Order_Date), Orders.RestID, Format(Orders.Order_Date,"mmmm yyyy"))  AS Sales INNER JOIN Restaurants ON Sales.Restaurant_ID = Restaurants.RestID
+GROUP BY Sales.Month_of_Sale, Sales.Year_of_Sale, Restaurants.RestaurantName, Sales.Restaurant_ID, Sales.Date_of_Sale
+ORDER BY Sales.Restaurant_ID, Sales.Year_of_Sale, Sales.Month_of_Sale;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
